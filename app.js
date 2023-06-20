@@ -121,8 +121,7 @@ function gameLoop() {
     if (gameOver()) {
         resetButton();
         alert("Game over!");
-        if (score > highScore)
-            highScore = score;
+
         resetGame();
     }
 
@@ -138,11 +137,16 @@ function gameLoop() {
             document.getElementById("score").innerHTML = `Score :${score}`;
         }
         updateScore();
+        if (score > highScore)
+            highScore = score;
         drawSnake();
         drawFood();
         gameLoop();
     }, speed);
 }
+
+updateScore();
+
 
 drawSnake();
 randomFood();
